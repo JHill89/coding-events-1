@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+
+<h1 th:fragment="styleHeader" class="fancyTitle" th:text="${title}"></h1>
+
+<div th:fragment="linkList">
+    <hr>
+    <a href="https://www.launchcode.org">LaunchCode</a> <br>
+    <a href="https://www.lego.com">Play Well</a> <br>
+    <a href="https://www.webelements.com">Other Building Blocks</a>
+</div>
+
+<nav th:fragment="navigation">
+    <ul>
+        <li><a href="/events" >All Events</a> </li>
+        <li><a href="/events/create">Create Event</a> </li>
+    </ul>
+</nav>
+
+</body>
+</html>
