@@ -19,13 +19,15 @@ public class EventController {
     @GetMapping
     public String displayAllEvents(Model model){
         model.addAttribute("events", EventData.getAllEvents());
+        model.addAttribute("title","All Events");
         
         return "events/index";
     }
     
     // lives at /events/create
     @GetMapping("create")
-    public String renderCreateEventForm(){
+    public String renderCreateEventForm(Model model){
+        model.addAttribute("title","Create Event");
         return "events/create";
     }
     
@@ -35,6 +37,23 @@ public class EventController {
         EventData.add(new Event(eventName,eventDescription));
         
         // redirects to the root path, like "redirect: /events"
+        return "redirect:";
+    }
+    
+    @GetMapping("delete")
+    public String displayDeleteForm(Model model){
+        model.addAttribute("title","Delete Events");
+        model.addAttribute("events",EventData.getAllEvents());
+        return "events/delete";
+    }
+    
+    @PostMapping("delete")
+    public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds){
+        if(eventIds != null){
+            for (int id : eventIds){
+                EventData.remove(id);
+            }
+        }
         return "redirect:";
     }
 }
