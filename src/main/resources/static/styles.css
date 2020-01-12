@@ -1,5 +1,8 @@
 body{
     font-size: 20px;
-    color: #EA4335;
-    background-color: #34A853;
+    /*color: #EA4335;*/
+}
+
+.error{
+    color: red;
 }
