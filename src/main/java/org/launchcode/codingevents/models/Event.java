@@ -110,6 +110,8 @@ public class Event {
         return name;
     }
     
+    
+    
     // comparison methods
     @Override
     public boolean equals(Object o) {
