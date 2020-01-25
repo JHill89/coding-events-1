@@ -10,11 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Event {
+public class Event extends AbstractEntity {
     
-    @Id
-    @GeneratedValue
-    private int id;
+
 //    private static int nextId = 1; -no longer needed due to GeneratedValue attribute
     
     @NotBlank(message = "Name is required")
@@ -77,10 +75,6 @@ public class Event {
         this.description = description;
     }
     
-    public int getId() {
-        return id;
-    }
-    
     public String getContactEmail() {
         return contactEmail;
     }
@@ -89,18 +83,4 @@ public class Event {
         this.contactEmail = contactEmail;
     }
     
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        
-        Event event = (Event) o;
-    
-        return id == event.id;
-    }
-    
-    @Override
-    public int hashCode() {
-        return id;
-    }
 }

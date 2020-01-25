@@ -7,11 +7,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-public class EventCategory {
+public class EventCategory extends AbstractEntity{
     
-    @Id
-    @GeneratedValue
-    private int id;
     
     @NotBlank(message = "Name is required")
     @Size(min = 3,max = 50,message = "Name must be between 3 and 50 characters.")
@@ -31,18 +28,4 @@ public class EventCategory {
         this.name = name;
     }
     
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        
-        EventCategory that = (EventCategory) o;
-    
-        return id == that.id;
-    }
-    
-    @Override
-    public int hashCode() {
-        return id;
-    }
 }
