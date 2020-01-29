@@ -11,7 +11,10 @@
     </tr>
     </thead>
     <tr th:each="eventCategory : ${categories}">
-        <td th:text="${eventCategory.name}"></td>
+        <td>
+            <a th:href="@{/events(eventCategoryId=${eventCategory.id})}"
+               th:text="${eventCategory.name}"></a>
+        </td>
 <!--        <td>-->
 <!--            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>-->
 <!--        </td>-->
