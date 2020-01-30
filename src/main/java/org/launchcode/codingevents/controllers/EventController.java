@@ -110,7 +110,7 @@ public class EventController {
     public String processEditForm(int eventId, String name, String description){
 //        Event modifyMe = EventData.getById(eventId);
         Event modifyMe = eventRepository.findById(eventId).get();
-        modifyMe.setDescription(description);
+        modifyMe.getEventDetails().setDescription(description);
         modifyMe.setName(name);
         eventRepository.save(modifyMe);
     
