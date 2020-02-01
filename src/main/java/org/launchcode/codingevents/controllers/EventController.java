@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -87,6 +88,21 @@ public class EventController {
             }
         }
         return "redirect:";
+    }
+    
+    @GetMapping("detail")
+    public String displayEventDetails(@RequestParam Integer eventId, Model model){
+        Optional<Event> result = eventRepository.findById(eventId);
+        if (result.isEmpty()){
+            model.addAttribute("title","Invalid Event ID: " + eventId);
+        }
+        else{
+            Event event = result.get();
+            model.addAttribute("title",event.getName() + "Details");
+            model.addAttribute("event", event);
+        }
+        
+        return "events/detail";
     }
     
     @GetMapping("edit/{eventId}")

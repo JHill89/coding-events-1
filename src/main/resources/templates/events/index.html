@@ -7,28 +7,20 @@
 
 <!--<nav th:replace="fragments :: navigation"></nav>-->
 
-<p th:unless="${events} and ${events.size()}">No Events</p>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Contact Email</th>
-            <th>Category</th>
-            <th>Edit</th>
+            <th>Event Name</th>
         </tr>
     </thead>
-    <tr th:each="event : ${events}">
-        <td th:text="${event.id}"></td>
-        <td th:text="${event.name}">event</td>
-        <td th:text="${event.eventDetails.description}">description</td>
-        <td th:text="${event.eventDetails.contactEmail}">contactEmail</td>
-        <td th:text="${event.eventCategory.name}">type</td>
-        <td>
-            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>
-        </td>
-    </tr>
+    <tbody>
+        <tr th:unless="${events} and ${events.size()}">No Events</tr>
+        <tr th:each="event : ${events}">
+            <td>
+                <a th:href="@{/events/detail(eventId=${event.id})}" th:text="${event.name}"></a>
+            </td>
+        </tr>
+    </tbody>
 </table>
 
 </body>
