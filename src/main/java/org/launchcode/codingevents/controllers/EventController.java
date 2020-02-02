@@ -106,6 +106,7 @@ public class EventController {
             Event event = result.get();
             model.addAttribute("title",event.getName() + "Details");
             model.addAttribute("event", event);
+            model.addAttribute("tags", event.getTags());
         }
         
         return "events/detail";
