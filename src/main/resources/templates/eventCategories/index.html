@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<header th:replace="fragments :: header"></header>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Category Name</th>
+    </tr>
+    </thead>
+    <tr th:each="eventCategory : ${categories}">
+        <td>
+            <a th:href="@{/events(eventCategoryId=${eventCategory.id})}"
+               th:text="${eventCategory.name}"></a>
+        </td>
+<!--        <td>-->
+<!--            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>-->
+<!--        </td>-->
+    </tr>
+</table>
+<p th:unless="${categories} and ${categories.size()}">No Categories</p>
+
+</body>
+</html>
